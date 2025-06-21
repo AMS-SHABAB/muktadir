@@ -7,27 +7,32 @@
   <meta name="description" content="Official website of Muktadir Shabab: writer, artist, actor, and social activist. Explore his art, literature, projects, and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+  <!-- Thin, premium, modern font (e.g., Inter, Poppins, or similar) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #FFB800;
-      --accent: #9436FF;
-      --doodle: #f7f4e9;
-      --bg-dark: #18131f;
-      --glass-bg: rgba(24,19,31,0.80);
-      --glass-border: rgba(255,255,255,0.12);
-      --shadow: 0 8px 32px 0 rgba(80,60,150,0.12);
-      --radius: 22px;
-      --text: #f7f4e9;
-      --footer: rgba(30,22,40,0.94);
+      --primary: #FF8500;
+      --accent: #fff;
+      --bg-black: #101014;
+      --glass-bg: rgba(16,16,20,0.8);
+      --glass-border: rgba(255,133,0,0.10);
+      --shadow: 0 8px 32px 0 rgba(255,133,0,0.08);
+      --radius: 25px;
+      --text: #fff;
+      --footer: #18181f;
+      --orange-grad: linear-gradient(90deg,#ff8500 60%,#ffb347 100%);
+      --orange-shadow: 0 4px 32px #ff850045;
+      --doodle-orange: #ff8500;
+      --doodle-white: #fff;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      background: linear-gradient(120deg, #18131f 0%, #2d2550 160%);
+      background: var(--bg-black);
       color: var(--text);
-      font-family: 'Roboto', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 200;
       min-height: 100vh;
       scroll-behavior: smooth;
+      letter-spacing: 0.01em;
     }
     body {
       position: relative;
@@ -38,17 +43,23 @@
       pointer-events: none;
       position: absolute;
       z-index: 0;
-      opacity: 0.18;
+      opacity: 0.13;
       filter: blur(1px);
+      animation: doodleMove 8s infinite alternate ease-in-out;
     }
-    .doodle.top { top: -45px; left: -60px; width: 250px; }
-    .doodle.bottom { bottom: -60px; right: -45px; width: 260px; }
-    .doodle.center { top: 50%; left: 70%; transform: translate(-50%, -50%); width: 140px; opacity: 0.10; }
+    .doodle.top { top: -55px; left: -70px; width: 270px; animation-delay: 0s;}
+    .doodle.bottom { bottom: -60px; right: -55px; width: 290px; animation-delay: 3s;}
+    .doodle.center { top: 49%; left: 60%; transform: translate(-50%, -50%); width: 120px; opacity: 0.10; animation-delay: 5s;}
+    @keyframes doodleMove {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(20px) scale(1.04);}
+    }
     header {
       padding: 2rem 1rem 2.5rem 1rem;
       text-align: center;
       position: relative;
       z-index: 2;
+      overflow: hidden;
     }
     .glass {
       background: var(--glass-bg);
@@ -59,65 +70,81 @@
       -webkit-backdrop-filter: blur(14px);
       position: relative;
       z-index: 1;
+      animation: fadeInGlass 1.7s cubic-bezier(.77,0,.175,1) both;
+    }
+    @keyframes fadeInGlass {
+      0% { opacity: 0; transform: translateY(40px) scale(0.97);}
+      100% { opacity: 1; transform: translateY(0) scale(1);}
     }
     header .glass {
       display: inline-block;
-      padding: 2rem 2.8rem 2.5rem 2.8rem;
+      padding: 2.5rem 3.2rem 2.7rem 3.2rem;
       margin-top: 1rem;
       margin-bottom: 1.2rem;
-      border-radius: 32px 32px 18px 18px;
+      border-radius: 40px 40px 24px 24px;
       border-width: 3px;
-      border-color: var(--primary);
-      box-shadow: 0 4px 32px #0008;
+      border-image: var(--orange-grad) 30;
+      box-shadow: var(--orange-shadow);
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(98deg,rgba(16,16,20,0.95) 80%,rgba(255,133,0,0.15) 100%);
     }
     header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.7rem;
+      font-size: 3.2rem;
       color: var(--primary);
-      margin-bottom: .6rem;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 32px #0008;
+      font-weight: 200;
+      margin-bottom: .5rem;
+      letter-spacing: 0.13em;
+      text-shadow: 0 4px 32px #ff850045;
+      font-family: 'Inter', Arial, sans-serif;
+      animation: slideInFade 1.6s cubic-bezier(.77,0,.175,1) 0.3s both;
     }
     header h2 {
-      font-family: 'Unbounded', cursive, sans-serif;
-      font-size: 1.28rem;
+      font-size: 1.19rem;
       color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-      text-shadow: 0 2px 10px #3f1e6b33;
-      letter-spacing: 1px;
+      font-weight: 100;
+      margin-bottom: 1.1rem;
+      letter-spacing: 0.08em;
+      text-shadow: 0 2px 10px #ff850025;
+      animation: slideInFade 1.6s cubic-bezier(.77,0,.175,1) 0.5s both;
     }
     header p {
       font-size: 1.13rem;
       margin-bottom: 1.5rem;
       color: var(--text);
-      opacity: 0.95;
-      font-family: 'Roboto', Arial, sans-serif;
+      opacity: 0.90;
+      font-weight: 100;
+      animation: fadeInGlass 1.6s cubic-bezier(.77,0,.175,1) 0.65s both;
     }
     .btn, .contact-btn {
-      background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
-      color: #18131f;
+      background: var(--orange-grad);
+      color: #191410;
       border: none;
-      padding: 0.75em 2.2em;
+      padding: 0.61em 2.1em;
       border-radius: 30px;
-      font-size: 1.08rem;
+      font-size: 1.01rem;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 200;
       margin: 0 .5rem;
-      letter-spacing: 1px;
-      transition: background 0.19s, color 0.19s, transform 0.19s;
-      box-shadow: 0 4px 14px #0004;
-      border: 2px solid var(--primary);
+      letter-spacing: 0.08em;
+      transition: background 0.17s, color 0.17s, box-shadow 0.17s, transform 0.13s;
+      box-shadow: 0 2px 10px #ff850024;
+      border: 1.5px solid var(--primary);
       outline: none;
-      text-shadow: 0 1px 8px #fff4;
+      text-shadow: none;
+      font-family: 'Inter', Arial, sans-serif;
+      opacity: 0.95;
+      position: relative;
+      z-index: 2;
     }
     .btn:hover, .contact-btn:hover {
-      background: linear-gradient(270deg, var(--accent) 10%, var(--primary) 100%);
-      color: var(--accent);
+      background: linear-gradient(270deg, #ffb347 40%, #ff8500 100%);
+      color: var(--primary);
       transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 18px #ff850045;
     }
     .contact-btn {
-      background: linear-gradient(90deg, #1e2130 30%, var(--primary) 100%);
+      background: linear-gradient(90deg, #151213 30%, var(--primary) 100%);
       color: var(--primary);
       border-color: var(--accent);
     }
@@ -126,11 +153,12 @@
       justify-content: center;
       gap: 0.7rem;
       margin-bottom: 1rem;
+      animation: fadeInGlass 1.3s cubic-bezier(.77,0,.175,1) 0.7s both;
     }
     /* Glassy Section */
     section {
-      max-width: 1150px;
-      margin: 3.2rem auto;
+      max-width: 1100px;
+      margin: 3rem auto;
       padding: 2rem 1.2rem 2.2rem 1.2rem;
       background: none;
       position: relative;
@@ -145,16 +173,22 @@
       border: 2px solid var(--glass-border);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
+      animation: fadeInGlass 1.5s cubic-bezier(.77,0,.175,1) both;
     }
     .section-title {
-      font-family: 'Unbounded', cursive, sans-serif;
-      font-size: 2.18rem;
+      font-size: 2.05rem;
       color: var(--primary);
       margin-bottom: 1.8rem;
       text-align: center;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 16px #0006;
+      font-weight: 100;
+      letter-spacing: 0.09em;
+      text-shadow: 0 2px 18px #ff850061;
+      font-family: 'Inter', Arial, sans-serif;
+      animation: slideInFade 1.1s cubic-bezier(.77,0,.175,1) both;
+    }
+    @keyframes slideInFade {
+      0% { opacity: 0; transform: translateY(30px);}
+      100% { opacity: 1; transform: translateY(0);}
     }
     /* About */
     #about {
@@ -165,29 +199,33 @@
       gap: 1.2rem;
     }
     #about img {
-      width: 126px;
-      height: 126px;
+      width: 116px;
+      height: 116px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--primary);
-      box-shadow: 0 4px 20px #0008;
+      box-shadow: 0 4px 15px #ff850038;
       margin-bottom: 1rem;
-      background: #fff;
+      background: #222;
+      animation: fadeInGlass 1.5s cubic-bezier(.77,0,.175,1) 0.2s both;
     }
     #about p {
       font-size: 1.13rem;
       color: var(--text);
-      opacity: 0.96;
+      opacity: 0.91;
       margin-bottom: 0.7rem;
-      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 100;
+      font-family: 'Inter', Arial, sans-serif;
+      animation: fadeInGlass 1.5s cubic-bezier(.77,0,.175,1) 0.5s both;
     }
     #about .roles {
-      font-size: 1.12rem;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      font-family: 'Unbounded', cursive, sans-serif;
+      font-size: 1.08rem;
+      color: var(--primary);
+      margin-bottom: 0.45rem;
+      font-weight: 200;
+      letter-spacing: 0.07em;
+      font-family: 'Inter', Arial, sans-serif;
+      animation: slideInFade 1.5s cubic-bezier(.77,0,.175,1) 0.3s both;
     }
     /* Features */
     #features {
@@ -199,35 +237,45 @@
       background: none;
     }
     .feature {
-      flex: 1 1 200px;
-      background: var(--bg-dark);
-      padding: 2rem 1.3rem;
-      border-radius: 15px;
-      box-shadow: 0 2px 12px #0002;
-      border: 1.5px dashed var(--accent);
+      flex: 1 1 210px;
+      background: rgba(20,18,16,0.96);
+      padding: 2.1rem 1.1rem 1.8rem 1.1rem;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px #ff850018;
+      border: 1.5px dashed var(--primary);
       margin-bottom: 1rem;
-      min-width: 200px;
-      max-width: 340px;
+      min-width: 210px;
+      max-width: 350px;
       position: relative;
+      overflow: hidden;
+      animation: fadeInGlass 1.4s cubic-bezier(.77,0,.175,1);
+      transition: box-shadow 0.25s;
+    }
+    .feature:hover {
+      box-shadow: 0 6px 28px #ff85004a;
+      border-color: var(--accent);
     }
     .feature h3 {
       color: var(--primary);
-      margin-bottom: .5rem;
-      font-size: 1.18rem;
-      font-family: 'Unbounded', cursive, sans-serif;
-      letter-spacing: 0.5px;
+      margin-bottom: .41rem;
+      font-size: 1.13rem;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
+      letter-spacing: 0.06em;
     }
     .feature p {
-      font-size: 1.05rem;
-      color: var(--text);
-      opacity: 0.95;
-      font-family: 'Roboto', Arial, sans-serif;
+      font-size: 1.01rem;
+      color: var(--accent);
+      opacity: 0.85;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
     }
     .feature .feature-doodle {
       position: absolute;
       top: -18px; right: -28px;
-      width: 54px; opacity: 0.12; z-index: 0;
+      width: 54px; opacity: 0.10; z-index: 0;
       pointer-events: none;
+      filter: drop-shadow(0 0 4px #ff8500);
     }
     /* YouTube Video List */
     #videos ul {
@@ -240,13 +288,19 @@
     #videos li {
       flex: 1 1 300px;
       max-width: 370px;
-      background: var(--bg-dark);
+      background: rgba(20,18,16,0.97);
       border-radius: 13px;
       overflow: hidden;
-      box-shadow: 0 1px 6px #0007;
+      box-shadow: 0 1px 6px #ff85001a;
       border: 1.5px solid var(--glass-border);
       margin-bottom: 1.1rem;
       position: relative;
+      animation: fadeInGlass 1.3s cubic-bezier(.77,0,.175,1) both;
+      transition: box-shadow 0.23s;
+    }
+    #videos li:hover {
+      box-shadow: 0 8px 32px #ff85004e;
+      border-color: var(--primary);
     }
     #videos iframe {
       width: 100%;
@@ -254,16 +308,21 @@
       border: none;
       display: block;
       background: #111;
+      filter: grayscale(30%);
+      transition: filter 0.22s;
+    }
+    #videos li:hover iframe {
+      filter: grayscale(0%) brightness(1.07);
     }
     #videos .video-title {
       padding: .8rem 1rem;
-      font-size: 1.07rem;
-      font-weight: 500;
-      color: var(--accent);
-      background: rgba(20,10,40,0.28);
-      font-family: 'Unbounded', cursive, sans-serif;
-      letter-spacing: 0.5px;
-      text-shadow: 0 1px 8px #0004;
+      font-size: 1.03rem;
+      font-weight: 200;
+      color: var(--primary);
+      background: rgba(16,10,5,0.22);
+      font-family: 'Inter', Arial, sans-serif;
+      letter-spacing: 0.07em;
+      text-shadow: 0 1px 8px #ff850033;
     }
     /* Portfolio */
     #portfolio .projects {
@@ -275,15 +334,21 @@
     .project {
       flex: 1 1 250px;
       max-width: 320px;
-      background: var(--bg-dark);
-      border-radius: 12px;
-      box-shadow: 0 1px 8px #0008;
-      padding: 1.3rem 1rem 1.5rem 1rem;
+      background: rgba(20,18,16,0.94);
+      border-radius: 13px;
+      box-shadow: 0 1px 8px #ff85001c;
+      padding: 1.2rem 1rem 1.3rem 1rem;
       border: 1.5px solid var(--glass-border);
       text-align: center;
       margin-bottom: 1.5rem;
       position: relative;
       overflow: hidden;
+      animation: fadeInGlass 1.4s cubic-bezier(.77,0,.175,1) both;
+      transition: box-shadow 0.22s;
+    }
+    .project:hover {
+      box-shadow: 0 12px 34px #ff85004a;
+      border-color: var(--primary);
     }
     .project img {
       width: 100%;
@@ -291,34 +356,42 @@
       object-fit: cover;
       border-radius: 10px;
       margin-bottom: .7rem;
-      box-shadow: 0 2px 12px #0005;
-      background: #fff;
+      box-shadow: 0 2px 12px #ff850035;
+      background: #1a1a1a;
+      filter: grayscale(20%);
+      transition: filter 0.19s;
+    }
+    .project:hover img {
+      filter: none;
     }
     .project h4 {
-      margin-bottom: .6rem;
+      margin-bottom: .52rem;
       color: var(--primary);
-      font-size: 1.19rem;
-      font-weight: 600;
-      font-family: 'Unbounded', cursive, sans-serif;
+      font-size: 1.13rem;
+      font-weight: 100;
+      letter-spacing: 0.07em;
+      font-family: 'Inter', Arial, sans-serif;
     }
     .project p {
-      color: var(--text);
-      font-size: 1.01rem;
-      opacity: 0.92;
+      color: var(--accent);
+      font-size: 0.99rem;
+      opacity: 0.88;
       margin-bottom: 0.3rem;
-      font-family: 'Roboto', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
     }
     .project a {
       display: inline-block;
-      margin-top: .4rem;
-      color: var(--accent);
+      margin-top: .22rem;
+      color: var(--primary);
       text-decoration: underline;
-      font-size: .98rem;
+      font-size: .97rem;
       transition: color .18s;
-      font-family: 'Unbounded', cursive, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
     }
     .project a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
     /* Contact Modal */
     #contact-modal {
@@ -326,9 +399,10 @@
       position: fixed;
       z-index: 9999;
       left: 0; top: 0; width: 100vw; height: 100vh;
-      background: rgba(22,18,28,0.68);
+      background: rgba(16,13,10,0.78);
       align-items: center;
       justify-content: center;
+      animation: fadeInGlass 1s both;
     }
     #contact-modal.active {
       display: flex;
@@ -337,8 +411,8 @@
       background: var(--glass-bg);
       border-radius: var(--radius);
       border: 2px solid var(--glass-border);
-      box-shadow: 0 8px 32px #000b;
-      padding: 2.2rem 2.2rem 1.5rem 2.2rem;
+      box-shadow: 0 8px 32px #ff85003b;
+      padding: 2.2rem 2.2rem 1.4rem 2.2rem;
       min-width: 320px;
       max-width: 97vw;
       text-align: center;
@@ -346,14 +420,15 @@
       z-index: 10;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
+      animation: fadeInGlass 1.3s cubic-bezier(.77,0,.175,1) both;
     }
     .contact-content h2 {
       color: var(--primary);
       margin-bottom: 1.1rem;
-      font-size: 1.4rem;
-      font-family: 'Unbounded', cursive, sans-serif;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 1.3rem;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
+      letter-spacing: 0.08em;
     }
     .contact-content form {
       display: flex;
@@ -362,27 +437,29 @@
     }
     .contact-content input,
     .contact-content textarea {
-      padding: 0.85em 1.1em;
+      padding: 0.82em 1em;
       border-radius: 8px;
       border: 1.5px solid var(--glass-border);
-      background: rgba(40,35,58,0.4);
+      background: rgba(22,18,16,0.6);
       color: var(--text);
       font-size: 1rem;
       resize: vertical;
       width: 100%;
-      transition: border .16s;
-      font-family: 'Roboto', Arial, sans-serif;
+      transition: border .15s;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
     }
     .contact-content input:focus,
     .contact-content textarea:focus {
-      border: 2px solid var(--accent);
+      border: 2px solid var(--primary);
       outline: none;
     }
     .contact-content .btn {
       margin: 0 auto;
       width: 60%;
       min-width: 102px;
-      font-family: 'Unbounded', cursive, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
     }
     .close-modal {
       position: absolute;
@@ -390,26 +467,26 @@
       right: 19px;
       background: none;
       border: none;
-      color: var(--accent);
+      color: var(--primary);
       font-size: 1.5rem;
       cursor: pointer;
-      font-weight: 700;
-      transition: color .18s;
+      font-weight: 200;
+      transition: color .14s;
       z-index: 11;
     }
     .close-modal:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
     /* Footer */
     footer {
       background: var(--footer);
       color: var(--text);
       text-align: center;
-      padding: 1.5rem 1rem;
+      padding: 1.35rem 1rem;
       margin-top: 3.5rem;
       border-radius: 20px 20px 0 0;
-      font-size: 1.07rem;
-      box-shadow: 0 -2px 16px #0005;
+      font-size: 1.05rem;
+      box-shadow: 0 -2px 14px #ff85001c;
       position: fixed;
       left: 50%;
       bottom: 0;
@@ -417,8 +494,10 @@
       width: 100vw;
       max-width: 100vw;
       z-index: 10;
-      letter-spacing: 1px;
-      font-family: 'Unbounded', cursive, sans-serif;
+      letter-spacing: 0.09em;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
+      opacity: 0.98;
     }
     footer a {
       color: var(--primary);
@@ -434,35 +513,36 @@
       background: var(--glass-bg);
       color: var(--text);
       border-radius: 14px;
-      box-shadow: 0 2px 18px #0008;
+      box-shadow: 0 2px 18px #ff85002c;
       border: 2px solid var(--glass-border);
-      padding: 1.15rem 1.8rem 1.15rem 1.8rem;
+      padding: 1.12rem 1.8rem 1.12rem 1.8rem;
       display: flex;
       align-items: center;
-      gap: 1.3rem;
+      gap: 1.2rem;
       z-index: 999;
       backdrop-filter: blur(12px);
-      font-size: 1.03rem;
+      font-size: 1.01rem;
       max-width: 92vw;
       animation: fadein 0.7s;
-      font-family: 'Roboto', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      font-weight: 100;
     }
     #cookies-popup button {
-      background: linear-gradient(90deg, var(--primary) 60%, var(--accent) 100%);
-      color: #18131f;
+      background: var(--orange-grad);
+      color: #181410;
       border: none;
       padding: 0.7em 1.6em;
       border-radius: 30px;
       font-size: 1.03rem;
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 200;
       margin-left: 0.2rem;
       border: 2px solid var(--glass-border);
-      transition: background 0.17s, color 0.17s;
+      transition: background 0.13s, color 0.13s;
     }
     #cookies-popup button:hover {
-      background: linear-gradient(270deg, var(--accent) 40%, var(--primary) 100%);
-      color: var(--accent);
+      background: linear-gradient(270deg, #ffb347 40%, #ff8500 100%);
+      color: var(--primary);
     }
     @keyframes fadein {
       from { opacity: 0; bottom: 0;}
@@ -478,14 +558,14 @@
       .feature, .project, #videos li { min-width: 75vw; }
     }
     @media (max-width: 720px) {
-      header .glass { padding: 1.1rem 0.5rem 1.5rem 0.5rem;}
-      .section-title { font-size: 1.5rem;}
-      #about img { width: 80px; height: 80px;}
-      .btn, .contact-btn { padding: 0.5em 1.1em; font-size: .95rem;}
+      header .glass { padding: 1.3rem 0.7rem 1.7rem 0.7rem;}
+      .section-title { font-size: 1.25rem;}
+      #about img { width: 74px; height: 74px;}
+      .btn, .contact-btn { padding: 0.5em 1.1em; font-size: .93rem;}
       .feature, .project, #videos li { min-width: 99vw; max-width: 99vw;}
       section, .glass-section { padding: .7rem;}
-      footer { font-size: .95rem;}
-      #cookies-popup { padding: 0.7rem 1.1rem; font-size: .98rem;}
+      footer { font-size: .91rem;}
+      #cookies-popup { padding: 0.7rem 1.1rem; font-size: .97rem;}
       .contact-content { min-width: 92vw;}
     }
   </style>
@@ -493,18 +573,18 @@
 <body>
   <!-- Doodle SVGs for Artistic Feel -->
   <svg class="doodle top" viewBox="0 0 250 180" fill="none">
-    <path d="M15,150 Q90,60 230,30 Q120,150 30,80 Q80,120 200,170" stroke="#FFB800" stroke-width="6" fill="none" opacity="0.8"/>
-    <circle cx="65" cy="65" r="16" fill="#9436FF" opacity="0.15"/>
-    <rect x="190" y="55" width="20" height="20" rx="4" fill="#FFB800" opacity="0.10"/>
+    <path d="M15,150 Q90,60 230,30 Q120,150 30,80 Q80,120 200,170" stroke="#ff8500" stroke-width="6" fill="none" opacity="0.74"/>
+    <circle cx="65" cy="65" r="16" fill="#fff" opacity="0.11"/>
+    <rect x="190" y="55" width="20" height="20" rx="5" fill="#ff8500" opacity="0.10"/>
   </svg>
   <svg class="doodle bottom" viewBox="0 0 260 180" fill="none">
-    <ellipse cx="200" cy="50" rx="38" ry="12" fill="#9436FF" opacity="0.17"/>
-    <path d="M40,120 Q70,140 200,160 Q180,80 90,150" stroke="#9436FF" stroke-width="5" fill="none" opacity="0.63"/>
-    <circle cx="50" cy="155" r="14" fill="#FFB800" opacity="0.19"/>
+    <ellipse cx="200" cy="50" rx="38" ry="12" fill="#fff" opacity="0.14"/>
+    <path d="M40,120 Q70,140 200,160 Q180,80 90,150" stroke="#fff" stroke-width="5" fill="none" opacity="0.13"/>
+    <circle cx="50" cy="155" r="14" fill="#ff8500" opacity="0.15"/>
   </svg>
   <svg class="doodle center" viewBox="0 0 140 140" fill="none">
-    <path d="M30,70 Q70,20 110,70 Q70,120 30,70" stroke="#FFB800" stroke-width="4" fill="none"/>
-    <circle cx="70" cy="70" r="20" fill="#9436FF" opacity="0.11"/>
+    <path d="M30,70 Q70,20 110,70 Q70,120 30,70" stroke="#ff8500" stroke-width="4" fill="none"/>
+    <circle cx="70" cy="70" r="20" fill="#fff" opacity="0.10"/>
   </svg>
   <!-- Hero Section -->
   <header>
@@ -517,7 +597,7 @@
       <h2>Writer · Artist · Actor · Social Activist</h2>
       <p>
         Welcome to the official site of Muktadir Shabab.<br>
-        Explore his world of creative writing, vibrant art, stage & screen performances, and work for social change.<br>
+        Explore a world where art, literature, and activism spark together.<br>
         Creativity is a journey—doodle on!
       </p>
     </div>
@@ -621,7 +701,7 @@
         <textarea name="message" rows="4" placeholder="Your Message or Book Preorder" required></textarea>
         <button class="btn" type="submit">Send Message</button>
       </form>
-      <div id="contact-success" style="display:none; margin-top:1.2rem; color:var(--primary); font-family: 'Unbounded', cursive, sans-serif;">
+      <div id="contact-success" style="display:none; margin-top:1.2rem; color:var(--primary); font-family: 'Inter', Arial, sans-serif; font-weight:100;">
         Thank you for reaching out! Shabab will reply soon.
       </div>
     </div>
