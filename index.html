@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Portfolio GitHub Page</title>
+  <style>
+    :root {
+      --primary: #2d8cff;
+      --accent: #173753;
+      --light: #f9f9f9;
+      --dark: #111;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 2.5rem 1rem 3.5rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: .5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      background: #fff;
+      color: var(--primary);
+      border: none;
+      padding: 0.7em 2em;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    section {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    /* About */
+    #about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    #about img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+    }
+    /* Features */
+    #features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      text-align: center;
+    }
+    .feature {
+      flex: 1 1 220px;
+      background: var(--light);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(50,60,100,0.06);
+    }
+    .feature h3 {
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+    /* YouTube Video List */
+    #videos ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      list-style: none;
+    }
+    #videos li {
+      flex: 1 1 280px;
+      max-width: 350px;
+      background: var(--light);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    #videos iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+      display: block;
+    }
+    #videos .video-title {
+      padding: .7rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+    /* Portfolio */
+    #portfolio .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .project {
+      flex: 1 1 260px;
+      max-width: 320px;
+      background: var(--light);
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      padding: 1rem;
+      text-align: center;
+    }
+    .project img {
+      width: 100%;
+      max-height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: .7rem;
+    }
+    .project h4 {
+      margin-bottom: .5rem;
+      color: var(--primary);
+    }
+    .project a {
+      display: inline-block;
+      margin-top: .5rem;
+      color: var(--accent);
+      text-decoration: underline;
+      font-size: .97rem;
+    }
+    /* Footer */
+    footer {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 1.3rem 1rem;
+      margin-top: 3rem;
+      border-radius: 10px 10px 0 0;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      #features, #portfolio .projects, #videos ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      section {
+        margin: 1.5rem 0.5rem;
+      }
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.5rem; }
+      .section-title { font-size: 1.3rem; }
+      #about img { width: 80px; height: 80px; }
+      .btn { padding: 0.5em 1.2em; font-size: .95rem; }
+      section { padding: .7rem; }
+      footer { font-size: .95rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <header>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Showcasing my work, skills, and latest YouTube tutorials.</p>
+    <a href="#portfolio" class="btn">View Portfolio</a>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile Picture">
+    <div>
+      <h2 class="section-title">About Me</h2>
+      <p>
+        Hi! I'm [Your Name], a passionate developer and content creator. 
+        I love building web applications, exploring new tech, and sharing what I learn on YouTube.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features">
+    <h2 class="section-title">Features</h2>
+    <div class="feature">
+      <h3>Modern Tech Stack</h3>
+      <p>Utilizing the latest technologies for robust and scalable solutions.</p>
+    </div>
+    <div class="feature">
+      <h3>Responsive Design</h3>
+      <p>Fully responsive layouts for all screen sizes.</p>
+    </div>
+    <div class="feature">
+      <h3>YouTube Tutorials</h3>
+      <p>Step-by-step videos to help you learn programming and development.</p>
+    </div>
+  </section>
+
+  <!-- YouTube Video List Section -->
+  <section id="videos">
+    <h2 class="section-title">YouTube Videos</h2>
+    <ul>
+      <li>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video 1" allowfullscreen></iframe>
+        <div class="video-title">How to Build a Portfolio Website</div>
+      </li>
+      <li>
+        <iframe src="https://www.youtube.com/embed/_uQrJ0TkZlc" title="Video 2" allowfullscreen></iframe>
+        <div class="video-title">JavaScript Crash Course</div>
+      </li>
+      <li>
+        <iframe src="https://www.youtube.com/embed/kUMe1FH4CHE" title="Video 3" allowfullscreen></iframe>
+        <div class="video-title">Responsive Design with CSS</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="https://placehold.co/320x140?text=Project+1" alt="Project 1">
+        <h4>Project One</h4>
+        <p>A web app for managing tasks and boosting productivity.</p>
+        <a href="https://github.com/" target="_blank">GitHub Repo</a>
+      </div>
+      <div class="project">
+        <img src="https://placehold.co/320x140?text=Project+2" alt="Project 2">
+        <h4>Project Two</h4>
+        <p>Open-source tool for visualizing data in real-time.</p>
+        <a href="https://github.com/" target="_blank">GitHub Repo</a>
+      </div>
+      <div class="project">
+        <img src="https://placehold.co/320x140?text=Project+3" alt="Project 3">
+        <h4>Project Three</h4>
+        <p>Personal blog powered by static site generators.</p>
+        <a href="https://github.com/" target="_blank">GitHub Repo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 [Your Name]. Built with GitHub Pages.
+  </footer>
+</body>
+</html>
