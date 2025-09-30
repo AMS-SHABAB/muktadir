@@ -3,40 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Chrome on Android: toolbar color -->
 
-<!-- Android toolbar color -->
-<meta name="theme-color" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
+  <!-- Toolbar color for light and dark mode -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#fff">
 
-<!-- iOS Safari (when added to home screen) -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<!-- Windows tile color -->
-<meta name="msapplication-TileColor" content="#ffffff">
   <title>Hero Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:wght@400&family=Montserrat:wght@100;400;500&family=Roboto:wght@400&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Libre Bodoni (bold), PT Serif Caption (thin), Montserrat, Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@700&family=PT+Serif+Caption&family=Montserrat:wght@100;400;500&family=Roboto:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    /* Browser toolbar color for mobile */
-    meta[name="theme-color"] {
-      content: #fff;
-    }
-    /* Simulated toolbar for all devices */
-  .fake-toolbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 40px; /* approximate toolbar height */
-    background-color: #ffffff;
-    z-index: 9999;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-  }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -140,7 +118,6 @@
       z-index: 201;
       position: relative;
     }
-    /* Apple 2-line hamburger icon */
     .navbar .hamburger .apple-bar {
       display: block;
       height: 2px;
@@ -159,7 +136,6 @@
     .navbar .hamburger .apple-bar2 {
       top: 24px;
     }
-    /* Hamburger active animation (slow closing) */
     .navbar .hamburger.active .apple-bar1 {
       top: 19.5px;
       transform: translateX(-50%) rotate(45deg);
@@ -171,7 +147,6 @@
       width: 26px;
     }
 
-    /* Dropdown menu (mobile) */
     .nav-dropdown-bg {
       display: none;
       position: fixed;
@@ -293,7 +268,6 @@
       margin-top: 12px;
     }
 
-    /* Desktop only */
     @media (min-width: 900px) {
       .navbar .nav-center,
       .navbar .nav-right {
@@ -304,7 +278,6 @@
       .navbar .hamburger { display: none !important; }
       .nav-dropdown, .nav-dropdown-bg { display: none !important; }
     }
-    /* Mobile only */
     @media (max-width: 899px) {
       .navbar {
         padding: 0 12px;
@@ -323,7 +296,6 @@
         height: calc(100vh - 56px);
       }
     }
-    /* Push hero down for sticky nav */
     .hero {
       margin-top: 64px;
     }
@@ -331,17 +303,15 @@
       .hero { margin-top: 56px; }
     }
 
-
-    /* --- YOUR HERO SECTION & STYLE --- */
+    /* --- HERO SECTION & STYLE --- */
     .hero {
       width: 100%;
-      margin: 50px 0 0 0;   /* only top margin */
-      padding: 30px 0 0 0;  /* only top padding */
+      margin: 50px 0 0 0;
+      padding: 30px 0 0 0;
       position: relative;
       text-align: center;
       overflow: hidden;
     }
-    /* Background geometric outlines */
     .circle, .square, .triangle {
       position: absolute;
       border: 1px solid rgba(0,0,0,0.15);
@@ -370,23 +340,22 @@
       right: 20px;
       opacity: 0.2;
     }
-    /* Text styling */
     h4 {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 100; /* Thin */
+      font-weight: 100;
       font-size:2rem;
       color: #555;
       margin-bottom: 10px;
     }
     h1 {
-      font-family: 'DM Serif Text', serif;
-      font-weight: 700; /* Bold */
+      font-family: 'Libre Bodoni', serif;
+      font-weight: 700;
       font-size: 7rem;
       margin: 10px 0;
     }
     h2 {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400; /* Normal */
+      font-family: 'PT Serif Caption', serif;
+      font-weight: 400;
       font-size: 5rem;
       margin: 10px 0;
       height: 30px;
@@ -408,18 +377,16 @@
       0%, 20% { opacity: 1; }
       25%, 100% { opacity: 0; }
     }
-
- p {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400; /* Medium-thin */
-  max-width: 600px;
-  margin: 80px auto 30px; /* top 40px, left/right auto, bottom 15px */
-  padding: 0px 0px;
-  font-size: 2.4rem;
-  color: #444;
-  text-align: center;/* centers text inside */
-}
-    /* Buttons */
+    p {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
+      max-width: 600px;
+      margin: 0px auto 30px;
+      padding: 20px 20px;
+      font-size: 1rem;
+      color: #444;
+      text-align: center;
+    }
     .buttons {
       margin: 20px 0;
     }
@@ -450,52 +417,34 @@
       background: #111;
       color: #fff;
     }
-
-    /* Full-width Image */
     .hero img {
-      width: 100vw;   /* full width of the viewport */
+      width: 100vw;
       height: auto;
       display: block;
       margin: 0;
       border-radius: 0;
     }
-
-    /* Divider */
     .divider {
       width: 100%;
       height: 1px;
       background: #ccc;
       margin-top: 20px;
     }
-
-    /* Responsive */
     @media (max-width: 768px) {
       h1 { font-size: 2.5rem; }
       h4 { font-size: 1rem; }
       h2 { font-size: 1.7rem ; }
       p { font-size: 1rem; }
     }
-    p {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400; /* Medium-thin */
-  max-width: 600px;
-  margin: 0px auto 30px; /* top 40px, left/right auto, bottom 15px */
-  padding: 20px 20px;
-  font-size: 1rem;
-  color: #444;
-  text-align: center;/* centers text inside */
-}
 
-/* --- HERO CONTENT FADING ON SCROLL --- */
-.hero-content-fade {
-  will-change: opacity, transform;
-  transition: opacity 0.4s, transform 0.4s;
-}
-/* (Optionally, image stays always visible and unaffected) */
+    /* --- HERO CONTENT FADING ON SCROLL --- */
+    .hero-content-fade {
+      will-change: opacity, transform;
+      transition: opacity 0.4s, transform 0.4s;
+    }
   </style>
 </head>
 <body>
-  <div class="fake-toolbar"></div> <!-- simulated toolbar -->
   <!-- Sticky NavBar -->
   <nav class="navbar">
     <div class="nav-logo">
@@ -539,7 +488,6 @@ l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
 -187z"/>
 </g>
 </svg>
-      </a>
     </div>
     <div class="nav-center">
       <a class="nav-menu-item" href="#">Home</a>
@@ -576,12 +524,11 @@ l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
   <!-- End NavBar -->
 
   <section class="hero">
-    <!-- Geometric shapes -->
     <div class="circle"></div>
     <div class="square"></div>
     <div class="triangle"></div>
 
-    <!-- BEGIN HERO CONTENT WRAPPER FOR FADING -->
+    <!-- Hero content for fading -->
     <div class="hero-content-fade" id="heroContentFade">
       <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
       <h1>Muktadir Shabab</h1>
@@ -599,12 +546,7 @@ l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
         <button class="btn-white">White Button</button>
       </div>
     </div>
-    <!-- END HERO CONTENT WRAPPER FOR FADING -->
-
-    <!-- Full-width image -->
     <img src="https://res.cloudinary.com/dxiwnqpja/image/upload/v1759256689/20251001_002248_0000_edit_1388024773009116_dbvfmt.png" alt="Hero Image">
-
-    <!-- Divider -->
     <div class="divider"></div>
   </section>
 
@@ -633,32 +575,24 @@ l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
     });
     dropdownBg.addEventListener('click', closeMenu);
 
-    // Allow closing menu with Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === "Escape" && navDropdown.classList.contains('open')) closeMenu();
     });
 
-    // Close menu when selecting menu item (optional for mobile nav UX)
     document.querySelectorAll('.nav-dropdown .menu-item').forEach(item => {
       item.addEventListener('click', closeMenu);
     });
 
-    // --- HERO CONTENT FADING ON SCROLL ---
+    // Hero content fade on scroll
     const heroContentFade = document.getElementById('heroContentFade');
     const heroSection = document.querySelector('.hero');
     window.addEventListener('scroll', function() {
-      // Calculate scroll distance from top of hero section
       const heroRect = heroSection.getBoundingClientRect();
       const windowHeight = window.innerHeight || document.documentElement.clientHeight;
       let scrollAmount = 0;
-
-      // Only fade out when hero is in viewport
       if (heroRect.top < windowHeight && heroRect.bottom > 0) {
-        // How far user has scrolled from top of hero (in pixels)
         scrollAmount = Math.max(0, -heroRect.top);
       }
-
-      // Fade out between 0px and 250px scroll
       const fadeStart = 0;
       const fadeEnd = 250;
       let opacity = 1;
