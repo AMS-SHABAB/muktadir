@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Toolbar color for light and dark mode -->
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#fff">
- <meta name="theme-color" content="#ffffff" id="theme-color-meta">
+  <!-- Toolbar color: initial, updated by JS -->
+  <meta name="theme-color" id="themeColorMeta" content="#fff">
+
   <title>Hero Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -433,7 +432,7 @@
     @media (max-width: 768px) {
       h1 { font-size: 2.5rem; }
       h4 { font-size: 1rem; }
-      h2 { font-size: 1.7rem ; }
+      h2 { font-size: 1.4rem ; }
       p { font-size: 1rem; }
     }
 
@@ -551,6 +550,22 @@ l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
   </section>
 
   <script>
+    // --- TOOLBAR COLOR SWITCHER JS ---
+    (function() {
+      function setThemeColor() {
+        const themeMeta = document.getElementById('themeColorMeta');
+        // Always set to white for both modes as per your request
+        themeMeta.setAttribute('content', '#fff');
+      }
+      // Set on load
+      setThemeColor();
+      // Listen for system theme changes
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', setThemeColor);
+      }
+    })();
+
     // Hamburger animation + dropdown
     const hamburger = document.querySelector('.hamburger');
     const navDropdown = document.getElementById('navDropdown');
