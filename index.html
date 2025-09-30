@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Chrome on Android: toolbar color -->
+
+<!-- Android toolbar color -->
 <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
 
 <!-- iOS Safari (when added to home screen) -->
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,6 +26,17 @@
     meta[name="theme-color"] {
       content: #fff;
     }
+    /* Simulated toolbar for all devices */
+  .fake-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px; /* approximate toolbar height */
+    background-color: #ffffff;
+    z-index: 9999;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  }
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -481,6 +495,7 @@
   </style>
 </head>
 <body>
+  <div class="fake-toolbar"></div> <!-- simulated toolbar -->
   <!-- Sticky NavBar -->
   <nav class="navbar">
     <div class="nav-logo">
