@@ -3,16 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ff0000">
+  <!-- Dark mode toolbar color -->
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#ff0000">
 
-  <!-- Toolbar color: initial, updated by JS -->
-  <meta name="theme-color" id="themeColorMeta" content="#fafafa">
-<meta name="theme-color" content="#ff0000">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#ff0000">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Red Toolbar Demo">
   <title>Hero Section</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Google Fonts: Libre Bodoni (bold), PT Serif Caption (thin), Montserrat, Roboto -->
   <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@700&family=PT+Serif+Caption&family=Montserrat:wght@100;400;500&family=Roboto:wght@400&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
@@ -20,7 +25,17 @@
       background: linear-gradient(to bottom, #fff 70%, #ffffff 30%);
       color: #111;
     }
-
+.toolbar-preview {
+      width: 100vw;
+      height: 40px;
+      background: #ff0000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
     /* --- NAVBAR --- */
     .navbar {
       position: fixed;
@@ -478,6 +493,8 @@ p {
   </style>
 </head>
 <body>
+  <div class="toolbar-preview">Toolbar color: RED</div>
+  
   <!-- Sticky NavBar -->
   <nav class="navbar">
     <div class="nav-logo">
@@ -585,23 +602,7 @@ Turning walls into stories, words into emotions, ideas into digital power. First
   </section>
 
   <script>
-    // --- TOOLBAR COLOR SWITCHER JS ---
-    (function() {
-      function setThemeColor() {
-        const themeMeta = document.getElementById('themeColorMeta');
-        // Always set to white for both modes as per your request
-        themeMeta.setAttribute('content', '#fafafa');
-      }
-      // Set on load
-      setThemeColor();
-      // Listen for system theme changes
-      if (window.matchMedia) {
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeColor);
-        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', setThemeColor);
-      }
-    })();
-
-    // Hamburger animation + dropdown
+  // Hamburger animation + dropdown
     const hamburger = document.querySelector('.hamburger');
     const navDropdown = document.getElementById('navDropdown');
     const dropdownBg = document.querySelector('.nav-dropdown-bg');
