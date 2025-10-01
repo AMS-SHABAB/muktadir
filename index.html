@@ -41,7 +41,7 @@
     .navbar .nav-logo {
       display: flex;
       align-items: center;
-      height: 100px;
+      height: 120px;
     }
     .navbar .nav-center {
       display: flex;
@@ -51,8 +51,8 @@
     }
     .navbar .nav-menu-item {
       position: relative;
-      font-size: 1.05rem;
-      font-weight: 500;
+      font-size: 1.8rem;
+      font-weight: 400;
       color: #111;
       cursor: pointer;
       transition: color 0.2s;
@@ -87,7 +87,7 @@
       color: #fff;
       border: none;
       padding: 10px 24px;
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-family: 'Montserrat', sans-serif;
       border-radius: 4px;
       font-weight: 500;
@@ -365,41 +365,73 @@
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
-      animation: fadeSkills 12s infinite;
+      animation: fadeSkills 15s infinite;
     }
     h2 span:nth-child(1) { animation-delay: 0s; }
     h2 span:nth-child(2) { animation-delay: 3s; }
     h2 span:nth-child(3) { animation-delay: 6s; }
     h2 span:nth-child(4) { animation-delay: 9s; }
-
+    h2 span:nth-child(5) { animation-delay: 12s; }
     @keyframes fadeSkills {
       0%, 20% { opacity: 1; }
       25%, 100% { opacity: 0; }
     }
-    p {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      max-width: 600px;
-      margin: 0px auto 30px;
-      padding: 20px 20px;
-      font-size: 1rem;
-      color: #444;
-      text-align: center;
-    }
+    /* Mobile first (default styles) */
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  max-width: 90%;
+  margin: 0px auto 30px;
+  padding: 20px 20px;
+  font-size: 1rem;
+  color: #444;
+  text-align: center;
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  p {
+    margin: 80px auto 30px;
+    font-size: 2.5rem;
+  }
+}
     .buttons {
       margin: 20px 0;
     }
-    .buttons button {
-      padding: 10px 20px;
-      border: 1px solid #111;
-      margin: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      border-radius: 0;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-    }
+  /* Mobile first: stacked in 2 rows */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  border: 1px solid #111;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 1rem; /* smaller text for mobile */
+  transition: all 0.3s ease;
+  border-radius: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  width: 100%;
+  max-width: 250px; /* keeps it tidy on small screens */
+}
+
+/* Desktop: 2 buttons in one centered row */
+@media (min-width: 1024px) {
+  .buttons {
+    flex-direction: row;   /* side by side */
+    justify-content: center; /* center horizontally */
+    gap: 20px; /* space between them */
+  }
+
+  .buttons button {
+    font-size: 2.3rem; /* bigger text */
+    width: 100%; /* don’t force full width */
+  }
+}
     .btn-black {
       background: #111;
       color: #fff;
@@ -423,19 +455,21 @@
       margin: 0;
       border-radius: 0;
     }
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: #ccc;
-      margin-top: 20px;
-    }
+   .divider {
+  width: 100%;
+  height: 0.5px; /* thinner line */
+  background: linear-gradient(to right, white, #ccc, white);
+  margin-top: 20px;
+  z-index: 21;
+}
     @media (max-width: 768px) {
       h1 { font-size: 2.5rem; }
       h4 { font-size: 1rem; }
       h2 { font-size: 1.4rem ; }
-      p { font-size: 1rem; }
     }
-
+.buttons button {
+      font-size: 1.3rem;
+  }
     /* --- HERO CONTENT FADING ON SCROLL --- */
     .hero-content-fade {
       will-change: opacity, transform;
@@ -529,20 +563,21 @@ l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
 
     <!-- Hero content for fading -->
     <div class="hero-content-fade" id="heroContentFade">
-      <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+      <h4><i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh</h4>
       <h1>Muktadir Shabab</h1>
       <h2>
-        <span>Web Designer</span>
+        <span>Artist & Designer</span>
         <span>Writer</span>
         <span>Actor</span>
-        <span>Digital Marketer</span>
+        <span>Artist</span>
+        <span>Freelance</span>
       </h2>
       <p>
-        Hi, I am Muktadir Shabab — an artist, writer, actor, director, designer, and digital marketer. I am passionate about creativity and storytelling in all its forms.
+Turning walls into stories, words into emotions, ideas into digital power. First exhibition at Chattogram Shilpokola Academy (2022). Dreaming big, creating bigger — from colors on canvas to lights of Hollywood.
       </p>
       <div class="buttons">
-        <button class="btn-black">Black Button</button>
-        <button class="btn-white">White Button</button>
+        <button class="btn-black">About Me</button>
+        <button class="btn-white">My Resume </button>
       </div>
     </div>
     <img src="https://res.cloudinary.com/dxiwnqpja/image/upload/v1759256689/20251001_002248_0000_edit_1388024773009116_dbvfmt.png" alt="Hero Image">
