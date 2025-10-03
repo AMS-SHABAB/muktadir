@@ -797,6 +797,7 @@ Turning walls into stories, words into emotions, ideas into digital power. First
   <button class="slider-btn next" id="nextBtn">&#8594;</button>
 </div>
 <div id="slideInfo"></div>
+  
 <script>
   // If you want to change date/location, update below
   const images = {
@@ -961,6 +962,158 @@ Turning walls into stories, words into emotions, ideas into digital power. First
   // Initialize
   updateSliderIfNeeded();
 </script>
+  <div class="team-container">
+  <div class="team-grid">
+
+    <!-- Member 1 -->
+    <div class="team-muktadir">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Muktadir Shabab">
+      </div>
+      <div class="member-body">
+        <h3 class="member-name">Muktadir Shabab</h3>
+        <h2 class="skills">
+          <span>Artist</span>
+          <span>Writer</span>
+          <span>Designer</span>
+          <span>Actor</span>
+          <span>Marketer</span>
+        </h2>
+        <button class="btn">See Details</button>
+      </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="team-muktadir">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1544725176-7c40e5a2c9f9" alt="Arifa">
+      </div>
+      <div class="member-body">
+        <h3 class="member-name">Arifa</h3>
+        <h2 class="skills">
+          <span>Artist</span>
+          <span>Developer</span>
+          <span>SEO</span>
+          <span>Marketer</span>
+          <span>Leader</span>
+        </h2>
+        <button class="btn">See Details</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  body{
+    font-family: 'PT Serif Caption', serif;
+    background: #fff;
+    margin:0;
+    padding:2rem;
+  }
+
+  .team-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  /* Team card */
+  .team-muktadir{
+    background: rgba(255,255,255,0.25);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 1rem;
+
+    /* double thin border */
+    border: 1px solid #000;
+    outline: 1px solid #000;
+    outline-offset: -6px;
+  }
+
+  .photo{
+    width: 100%;
+    aspect-ratio: 1/1; /* square image */
+    overflow: hidden;
+  }
+  .photo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .member-body{ padding: 1rem; }
+  .member-name{
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  /* Skills rotating text */
+  .skills{
+    position: relative;
+    height: 30px;
+    margin: 10px 0;
+    font-size: 1rem;
+    font-weight: 400;
+    overflow: hidden;
+  }
+  .skills span{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeSkills 15s infinite;
+  }
+  .skills span:nth-child(1){ animation-delay: 0s; }
+  .skills span:nth-child(2){ animation-delay: 3s; }
+  .skills span:nth-child(3){ animation-delay: 6s; }
+  .skills span:nth-child(4){ animation-delay: 9s; }
+  .skills span:nth-child(5){ animation-delay: 12s; }
+
+  @keyframes fadeSkills{
+    0%, 20% { opacity: 1; }
+    25%, 100% { opacity: 0; }
+  }
+
+  /* Glassmorphism button */
+  .btn{
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(6px) saturate(150%);
+    -webkit-backdrop-filter: blur(6px) saturate(150%);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: 0.3s;
+  }
+  .btn:hover{
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+  }
+
+  /* Responsive tweaks */
+  @media(max-width:780px){
+    .team-grid{
+      grid-template-columns: repeat(2, 1fr); /* keep 2 columns on mobile */
+      gap: 1rem;
+    }
+    .skills{ font-size: 0.9rem; }
+    .member-name{ font-size: 1rem; }
+  }
+  @media(max-width:480px){
+    .skills{ font-size: 0.8rem; }
+  }
+</style>
   <script>
   // Hamburger animation + dropdown
     const hamburger = document.querySelector('.hamburger');
