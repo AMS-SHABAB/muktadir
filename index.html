@@ -600,368 +600,7 @@ Turning walls into stories, words into emotions, ideas into digital power. First
     <img src="https://res.cloudinary.com/dxiwnqpja/image/upload/v1759256689/20251001_002248_0000_edit_1388024773009116_dbvfmt.png" alt="Hero Image">
     <div class="divider"></div>
   </section>
-  <section class="section-title">
-  <h2>Wall Painting Of The Year</h2>
-  <span class="subtitle">Best in Low Budget</span>
-</section>
-
-<style>
-.section-title {
-  background: linear-gradient(
-    90deg,
-    #ffffff 0%,       /* left white */
-    #ffffff 40%,      /* end of left white */
-    #E9DCC9 40%,      /* start of thin middle */
-    #E9DCC9 60%,      /* end of thin middle */
-    #ffffff 60%,      /* start of right white */
-    #ffffff 100%      /* end of right white */
-  );
-  color: #000000;
-  font-family: 'PT Serif Caption', serif;
-  text-align: center;
-  padding: 4rem 1.5rem;
-  margin: 0;
-  box-sizing: border-box;
-}
-.section-title h2 {  
-  font-size: clamp(1.75rem, 5vw, 3rem);  
-  line-height: 1.2;  
-  margin: 0;  
-  font-weight: 700;  
-  letter-spacing: -0.02em;  
-}  
-
-.section-title .subtitle {  
-  display: block;  
-  margin-top: 0.5rem;  
-  font-size: clamp(0.95rem, 2vw, 1.25rem);  
-  opacity: 0.8;  
-  font-weight: 400;  
-}  
-
-.section-title::after {  
-  content: "";  
-  display: block;  
-  width: min(180px, 35%);  
-  height: 2px;  
-  margin: 1rem auto 0;  
-  background: linear-gradient(90deg,  
-              rgba(0,0,0,0),  
-              rgba(0,0,0,0.7),  
-              rgba(0,0,0,0));  
-  border-radius: 2px;  
-}
-  html, body { height: 100%; margin: 0; padding: 0; }
-  .slider {
-    width: 100vw;
-    height: 100vw;
-    max-height: 80vh;
-    position: relative;
-    overflow: hidden;
-    margin: 0;
-    background: #000;
-  }
-  .slide {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-    transition: opacity 0.5s;
-    opacity: 0;
-  }
-  .slide.active {
-    display: block;
-    opacity: 1;
-    z-index: 2;
-  }
- .image-frame {    
-  width: 100vw;    
-  height: 100%;    
-  box-sizing: border-box;    
-  background: #fff; /* plain white background */    
-  display: flex;    
-  align-items: center;    
-  justify-content: center;    
-  padding: 2vw; /* spacing inside frame */    
-  border-radius: 0; /* sharp corners */    
-  border: 2px double #000; /* thin double border */    
-  margin: 0 auto;    
-  position: relative;    
-}
-  .slider img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  margin: 0;
-  background: #fff;
-  box-shadow: 0 0 3px 0 rgba(0,0,0,0.03);
-  border: 2px double #000; /* same double border as frame */
-}
-  .slide-title {
-    font-family: 'Libre Bodoni', serif;
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
-    color: #fff;
-    background: rgba(0,0,0,0.4);
-    padding: 1em;
-    text-align: center;
-    font-size: 1.2em;
-    z-index: 3;
-    letter-spacing: 0.04em;
-  }
-  .slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 45px; height: 45px;
-    cursor: pointer;
-    font-size: 2em;
-    z-index: 10;
-    outline: none;
-    transition: background 0.2s;
-    user-select: none;
-  }
-  .slider-btn:hover { background: rgba(0,0,0,0.8); }
-  .slider-btn.prev { left: 10px; }
-  .slider-btn.next { right: 10px; }
-
-  /* Desktop: landscape slider */
-  @media (min-width: 701px) {
-    .slider {
-      height: 40vw;   /* 16:9 ratio sample */
-      max-height: 70vh;
-    }
-    .image-frame {
-      height: 100%;
-      width: 100%;
-      padding: 1.5vw;
-    }
-    .slider img {
-      aspect-ratio: 16/9;
-    }
-  }
-  /* Mobile: portrait slider */
-  @media (max-width: 700px) {
-    .slider {
-      height: 130vw;  /* 4:5 or similar portrait ratio */
-      max-height: 90vh;
-    }
-    .image-frame {
-      width: 100%;
-      padding: 4vw;
-    }
-    .slider img {
-      aspect-ratio: 4/5;
-    }
-  }
-  /* Info below slider */
-  .slide-info {
-    font-family: 'PT Serif Caption', serif;
-    text-align: center;
-    margin: 1.6em 0 2.5em 0;
-    font-size: 1.15em;
-    color: #222;
-    background: #fff;
-    border-radius: 8px;
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.3em 0.8em 1.3em 0.8em;
-  }
-  .slide-info .info-title {
-    font-family: 'Libre Bodoni', serif;
-    font-weight: bold;
-    font-size: 1.15em;
-    margin-bottom: 0.2em;
-    color: #0d0d0d;
-    letter-spacing: 0.04em;
-  }
-  .slide-info .info-row {
-    margin-bottom: 0.15em;
-    color: #333;
-  }
-  .slide-info .label {
-    font-weight: 500;
-    color: #666;
-    margin-right: 0.2em;
-  }
-</style>
-<div class="slider" id="slider">
-  <button class="slider-btn prev" id="prevBtn">&#8592;</button>
-  <button class="slider-btn next" id="nextBtn">&#8594;</button>
-</div>
-<div id="slideInfo"></div>
   
-<script>
-  // If you want to change date/location, update below
-  const images = {
-    mobile: [
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306904/PXL_20240929_122536645.PORTRAIT_edit_1415222216414045_nu2huj.jpg",
-        title: "Boho Art on walls",
-        date: "2024 November",
-        location: "Anowara Chattarhat"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308854/IMG_20251001_145204_edit_1419145602758587_hwqxtl.jpg",
-        title: "Starry Night on Walls",
-        date: "2024 November",
-        location: "Anowara Chattarhat"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308857/IMG_20251001_145253_edit_1419124044897739_ah0o3p.jpg",
-        title: "Quota Protest Graffiti",
-        date: "2024 September",
-        location: "Jamalkhan, Chattagram"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306899/4089cf18-d6e6-4242-b95b-79bd8da17931_edit_1415114845607885_myomqe.jpg",
-        title: "Real Madrid Logo on Wall",
-        date: "2024 November",
-        location: "Anowara Chattarhat"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306897/dad1f8a5-5a8c-4709-a088-3ec70d629d03_edit_1415048731714343_ohw5n5.jpg",
-        title: "Folk art",
-        date: "2024 November",
-        location: "Anowara Chattarhat"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306895/1759305130261_edit_1416806524984370_nhyrfl.jpg",
-        title: "Normal Natural",
-        date: "2024 December",
-        location: "South Asian International School, Nasirabad"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759309089/Untitled_design_20251001_141129_0000_edit_1419360797008446_a9bmd1.png",
-        title: "Normal Natural",
-        date: "2024 December",
-        location: "South Asian International School, Nasirabad"
-      }
-    ],
-    desktop: [
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308284/Jamalkhan_2024_20251001_143741_0000_xh9rai.png",
-        title: "Landscape 1",
-        date: "2025-10-01",
-        location: "Jamalkhan, Chattogram"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308311/Jamalkhan_2024_20251001_143602_0000_lzgtkn.png",
-        title: "Landscape 2",
-        date: "2025-10-01",
-        location: "Jamalkhan, Chattogram"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308312/Jamalkhan_2024_20251001_143639_0000_wlxabg.png",
-        title: "Landscape 3",
-        date: "2025-10-01",
-        location: "Jamalkhan, Chattogram"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308317/Jamalkhan_2024_20251001_143433_0000_ko1lej.png",
-        title: "Landscape 4",
-        date: "2025-10-01",
-        location: "Jamalkhan, Chattogram"
-      },
-      {
-        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308314/Jamalkhan_2024_20251001_143514_0000_mxfjoe.png",
-        title: "Landscape 5",
-        date: "2025-10-01",
-        location: "Jamalkhan, Chattogram"
-      }
-    ]
-  };
-
-  const slider = document.getElementById('slider');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const slideInfo = document.getElementById('slideInfo');
-  let currentSlide = 0;
-  let slides = [];
-  let currentMode = null;
-  let currentImages = [];
-
-  function getMode() {
-    return window.innerWidth > 700 ? 'desktop' : 'mobile';
-  }
-
-  function renderSlides(mode) {
-    // Remove previous slides
-    slider.querySelectorAll('.slide').forEach(e => e.remove());
-    slides = [];
-    currentImages = images[mode];
-    currentImages.forEach((imgObj, i) => {
-      const div = document.createElement('div');
-      div.className = 'slide' + (i === 0 ? ' active' : '');
-      // White frame container
-      const frame = document.createElement('div');
-      frame.className = 'image-frame';
-      const img = document.createElement('img');
-      img.src = imgObj.src;
-      img.alt = imgObj.title;
-      frame.appendChild(img);
-      div.appendChild(frame);
-      // Title overlay (on image, optional)
-      // const title = document.createElement('div');
-      // title.className = 'slide-title';
-      // title.textContent = imgObj.title;
-      // div.appendChild(title);
-      slider.appendChild(div);
-      slides.push(div);
-    });
-    currentSlide = 0;
-  }
-
-  function renderSlideInfo(n) {
-    const imgObj = currentImages[n];
-    slideInfo.innerHTML = `
-      <div class="slide-info">
-        <div class="info-title">${imgObj.title}</div>
-        <div class="info-row"><span class="label">Date:</span> ${imgObj.date}</div>
-        <div class="info-row"><span class="label">Location:</span> ${imgObj.location}</div>
-      </div>
-    `;
-  }
-
-  function showSlide(n) {
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle('active', idx === n);
-    });
-    renderSlideInfo(n);
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-  function nextSlideFunc() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  function updateSliderIfNeeded() {
-    const mode = getMode();
-    if (mode !== currentMode) {
-      currentMode = mode;
-      renderSlides(mode);
-    }
-    showSlide(currentSlide);
-  }
-
-  prevBtn.addEventListener('click', prevSlide);
-  nextBtn.addEventListener('click', nextSlideFunc);
-  window.addEventListener('resize', updateSliderIfNeeded);
-
-  // Initialize
-  updateSliderIfNeeded();
-</script>
 <style>
  *, *:before, *:after {
   box-sizing: border-box;
@@ -1394,14 +1033,14 @@ a {
     </div>
 
     <div class="description-section">
-      <h5 class="section-title">About Me</h5>
+      <div class="section-title">About Me</div>
       <p class="movie-description" id="description">
         Muktadir Shabab is a multi-talented creative professional from Bangladesh, excelling as an artist, writer, actor, director, and designer, while also working in digital marketing. Known for his passion and dedication, he combines artistic vision with strategic creativity across his projects. Muktadir is deeply inspired by his personal connections, notably his love for his girlfriend, Arifa. He continues to explore innovative ways to blend art, storytelling, and design, leaving a mark in every field he pursues.
       </p>
     </div>
 
     <div class="cast-section">
-      <h5 class="section-title">My Team</h5>
+      <div class="section-title">My Team</div>
       <div class="cast-list">
         <div class="cast-item">
           <img src="https://res.cloudinary.com/dxiwnqpja/image/upload/v1759510240/IMG-20251003-WA0004_ee0vgn.jpg" class="cast-photo" alt="" />
@@ -1443,6 +1082,368 @@ a {
   </div>
 </div>
    </div>
+  <section class="section-title">
+  <h2>Wall Painting Of The Year</h2>
+  <span class="subtitle">Best in Low Budget</span>
+</section>
+
+<style>
+.section-title {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,       /* left white */
+    #ffffff 40%,      /* end of left white */
+    #E9DCC9 40%,      /* start of thin middle */
+    #E9DCC9 60%,      /* end of thin middle */
+    #ffffff 60%,      /* start of right white */
+    #ffffff 100%      /* end of right white */
+  );
+  color: #000000;
+  font-family: 'PT Serif Caption', serif;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+.section-title h2 {  
+  font-size: clamp(1.75rem, 5vw, 3rem);  
+  line-height: 1.2;  
+  margin: 0;  
+  font-weight: 700;  
+  letter-spacing: -0.02em;  
+}  
+
+.section-title .subtitle {  
+  display: block;  
+  margin-top: 0.5rem;  
+  font-size: clamp(0.95rem, 2vw, 1.25rem);  
+  opacity: 0.8;  
+  font-weight: 400;  
+}  
+
+.section-title::after {  
+  content: "";  
+  display: block;  
+  width: min(180px, 35%);  
+  height: 2px;  
+  margin: 1rem auto 0;  
+  background: linear-gradient(90deg,  
+              rgba(0,0,0,0),  
+              rgba(0,0,0,0.7),  
+              rgba(0,0,0,0));  
+  border-radius: 2px;  
+}
+  html, body { height: 100%; margin: 0; padding: 0; }
+  .slider {
+    width: 100vw;
+    height: 100vw;
+    max-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    background: #000;
+  }
+  .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    transition: opacity 0.5s;
+    opacity: 0;
+  }
+  .slide.active {
+    display: block;
+    opacity: 1;
+    z-index: 2;
+  }
+ .image-frame {    
+  width: 100vw;    
+  height: 100%;    
+  box-sizing: border-box;    
+  background: #fff; /* plain white background */    
+  display: flex;    
+  align-items: center;    
+  justify-content: center;    
+  padding: 2vw; /* spacing inside frame */    
+  border-radius: 0; /* sharp corners */    
+  border: 2px double #000; /* thin double border */    
+  margin: 0 auto;    
+  position: relative;    
+}
+  .slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.03);
+  border: 2px double #000; /* same double border as frame */
+}
+  .slide-title {
+    font-family: 'Libre Bodoni', serif;
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    color: #fff;
+    background: rgba(0,0,0,0.4);
+    padding: 1em;
+    text-align: center;
+    font-size: 1.2em;
+    z-index: 3;
+    letter-spacing: 0.04em;
+  }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px; height: 45px;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 10;
+    outline: none;
+    transition: background 0.2s;
+    user-select: none;
+  }
+  .slider-btn:hover { background: rgba(0,0,0,0.8); }
+  .slider-btn.prev { left: 10px; }
+  .slider-btn.next { right: 10px; }
+
+  /* Desktop: landscape slider */
+  @media (min-width: 701px) {
+    .slider {
+      height: 40vw;   /* 16:9 ratio sample */
+      max-height: 70vh;
+    }
+    .image-frame {
+      height: 100%;
+      width: 100%;
+      padding: 1.5vw;
+    }
+    .slider img {
+      aspect-ratio: 16/9;
+    }
+  }
+  /* Mobile: portrait slider */
+  @media (max-width: 700px) {
+    .slider {
+      height: 130vw;  /* 4:5 or similar portrait ratio */
+      max-height: 90vh;
+    }
+    .image-frame {
+      width: 100%;
+      padding: 4vw;
+    }
+    .slider img {
+      aspect-ratio: 4/5;
+    }
+  }
+  /* Info below slider */
+  .slide-info {
+    font-family: 'PT Serif Caption', serif;
+    text-align: center;
+    margin: 1.6em 0 2.5em 0;
+    font-size: 1.15em;
+    color: #222;
+    background: #fff;
+    border-radius: 8px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.3em 0.8em 1.3em 0.8em;
+  }
+  .slide-info .info-title {
+    font-family: 'Libre Bodoni', serif;
+    font-weight: bold;
+    font-size: 1.15em;
+    margin-bottom: 0.2em;
+    color: #0d0d0d;
+    letter-spacing: 0.04em;
+  }
+  .slide-info .info-row {
+    margin-bottom: 0.15em;
+    color: #333;
+  }
+  .slide-info .label {
+    font-weight: 500;
+    color: #666;
+    margin-right: 0.2em;
+  }
+</style>
+<div class="slider" id="slider">
+  <button class="slider-btn prev" id="prevBtn">&#8592;</button>
+  <button class="slider-btn next" id="nextBtn">&#8594;</button>
+</div>
+<div id="slideInfo"></div>
+  
+<script>
+  // If you want to change date/location, update below
+  const images = {
+    mobile: [
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306904/PXL_20240929_122536645.PORTRAIT_edit_1415222216414045_nu2huj.jpg",
+        title: "Boho Art on walls",
+        date: "2024 November",
+        location: "Anowara Chattarhat"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308854/IMG_20251001_145204_edit_1419145602758587_hwqxtl.jpg",
+        title: "Starry Night on Walls",
+        date: "2024 November",
+        location: "Anowara Chattarhat"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308857/IMG_20251001_145253_edit_1419124044897739_ah0o3p.jpg",
+        title: "Quota Protest Graffiti",
+        date: "2024 September",
+        location: "Jamalkhan, Chattagram"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306899/4089cf18-d6e6-4242-b95b-79bd8da17931_edit_1415114845607885_myomqe.jpg",
+        title: "Real Madrid Logo on Wall",
+        date: "2024 November",
+        location: "Anowara Chattarhat"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306897/dad1f8a5-5a8c-4709-a088-3ec70d629d03_edit_1415048731714343_ohw5n5.jpg",
+        title: "Folk art",
+        date: "2024 November",
+        location: "Anowara Chattarhat"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759306895/1759305130261_edit_1416806524984370_nhyrfl.jpg",
+        title: "Normal Natural",
+        date: "2024 December",
+        location: "South Asian International School, Nasirabad"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759309089/Untitled_design_20251001_141129_0000_edit_1419360797008446_a9bmd1.png",
+        title: "Normal Natural",
+        date: "2024 December",
+        location: "South Asian International School, Nasirabad"
+      }
+    ],
+    desktop: [
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308284/Jamalkhan_2024_20251001_143741_0000_xh9rai.png",
+        title: "Landscape 1",
+        date: "2025-10-01",
+        location: "Jamalkhan, Chattogram"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308311/Jamalkhan_2024_20251001_143602_0000_lzgtkn.png",
+        title: "Landscape 2",
+        date: "2025-10-01",
+        location: "Jamalkhan, Chattogram"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308312/Jamalkhan_2024_20251001_143639_0000_wlxabg.png",
+        title: "Landscape 3",
+        date: "2025-10-01",
+        location: "Jamalkhan, Chattogram"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308317/Jamalkhan_2024_20251001_143433_0000_ko1lej.png",
+        title: "Landscape 4",
+        date: "2025-10-01",
+        location: "Jamalkhan, Chattogram"
+      },
+      {
+        src: "https://res.cloudinary.com/dxiwnqpja/image/upload/v1759308314/Jamalkhan_2024_20251001_143514_0000_mxfjoe.png",
+        title: "Landscape 5",
+        date: "2025-10-01",
+        location: "Jamalkhan, Chattogram"
+      }
+    ]
+  };
+
+  const slider = document.getElementById('slider');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const slideInfo = document.getElementById('slideInfo');
+  let currentSlide = 0;
+  let slides = [];
+  let currentMode = null;
+  let currentImages = [];
+
+  function getMode() {
+    return window.innerWidth > 700 ? 'desktop' : 'mobile';
+  }
+
+  function renderSlides(mode) {
+    // Remove previous slides
+    slider.querySelectorAll('.slide').forEach(e => e.remove());
+    slides = [];
+    currentImages = images[mode];
+    currentImages.forEach((imgObj, i) => {
+      const div = document.createElement('div');
+      div.className = 'slide' + (i === 0 ? ' active' : '');
+      // White frame container
+      const frame = document.createElement('div');
+      frame.className = 'image-frame';
+      const img = document.createElement('img');
+      img.src = imgObj.src;
+      img.alt = imgObj.title;
+      frame.appendChild(img);
+      div.appendChild(frame);
+      // Title overlay (on image, optional)
+      // const title = document.createElement('div');
+      // title.className = 'slide-title';
+      // title.textContent = imgObj.title;
+      // div.appendChild(title);
+      slider.appendChild(div);
+      slides.push(div);
+    });
+    currentSlide = 0;
+  }
+
+  function renderSlideInfo(n) {
+    const imgObj = currentImages[n];
+    slideInfo.innerHTML = `
+      <div class="slide-info">
+        <div class="info-title">${imgObj.title}</div>
+        <div class="info-row"><span class="label">Date:</span> ${imgObj.date}</div>
+        <div class="info-row"><span class="label">Location:</span> ${imgObj.location}</div>
+      </div>
+    `;
+  }
+
+  function showSlide(n) {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle('active', idx === n);
+    });
+    renderSlideInfo(n);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+  function nextSlideFunc() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function updateSliderIfNeeded() {
+    const mode = getMode();
+    if (mode !== currentMode) {
+      currentMode = mode;
+      renderSlides(mode);
+    }
+    showSlide(currentSlide);
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlideFunc);
+  window.addEventListener('resize', updateSliderIfNeeded);
+
+  // Initialize
+  updateSliderIfNeeded();
+</script>
     <section class="section-title">
   <h2>My Strength</h2>
   <span class="subtitle">Introducing Mr. Nazmul & Mr. Anis</span>
