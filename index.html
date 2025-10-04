@@ -962,7 +962,487 @@ Turning walls into stories, words into emotions, ideas into digital power. First
   // Initialize
   updateSliderIfNeeded();
 </script>
+<style>
+ *, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+:root {
+  --brand-color: #fe4141;        /* accent/red */
+  --dark-color: #fff;            /* card background → white */
+  --accent-color: #000;          /* main text → black */
+  --text-light: #444;            /* secondary text → dark gray */
+  --text-lighter: #666;          /* lighter gray */
+  --section-space: 16px;
+  --card-padding: 24px;
+  --poster-overlay: rgba(0, 0, 0, 0.25); /* subtle black overlay */
+}
+
+.container {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.95),   /* top white */
+    rgba(233, 233, 233, 0.95),   /* soft gray middle */
+    rgba(255, 255, 255, 0.95)    /* bottom white */
+  ),
+  url("https://assets.codepen.io/406785/pulp2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--accent-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.movie-card {
+  width: 100%;
+  background-color: var(--dark-color);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.movie-img-container {
+  height: 380px;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-img {
+  height: 100%;
+  width: 100%;
+  background: url("https://res.cloudinary.com/dxiwnqpja/image/upload/v1757137361/1756911165299_edit_236035339760068_wetexo.jpg") no-repeat;
+  background-position: 37% 23% !important;
+  background-size: cover;
+}
+
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 30%,   /* transparent at top */
+    rgba(255, 255, 255, 0.3) 60%, /* soft white in middle */
+    rgba(255, 255, 255, 0.6) 100% /* stronger white at bottom */
+  );
+  z-index: 1;
+}
+
+.movie-content {
+  padding: var(--card-padding);
+  position: relative;
+  margin-top: -120px;
+  z-index: 2;
+}
+
+.title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.movie-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent-color);
+  line-height: 1.2;
+}
+
+.year-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-lighter);
+  margin-left: 8px;
+  opacity: 0.85;
+}
+
+.rating-badge {
+  background-color: var(--brand-color);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  letter-spacing: 0.5px;
+}
+
+.metadata {
+  display: flex;
+  align-items: center;
+  margin: 8px 0 var(--section-space);
+}
+
+.duration {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.duration-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--text-light);
+  margin-right: 4px;
+}
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--section-space);
+}
+
+.genre-tag {
+  background-color: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 3px 10px;
+  border-radius: 16px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent-color);
+  transition: all 0.2s ease;
+}
+
+.ratings-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--section-space);
+  padding-bottom: var(--section-space);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.stars {
+  display: flex;
+}
+
+.star {
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+}
+
+.star-filled {
+  fill: #FFD700;
+}
+
+.star-half {
+  fill: url(#halfGradient);
+}
+
+.star-empty {
+  fill: rgba(0, 0, 0, 0.1);
+}
+
+.rating-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-lighter);
+  margin-left: 8px;
+}
+
+.likes {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0,0,0,0.05);
+  padding: 5px 10px;
+  border-radius: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.heart-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  fill: var(--brand-color);
+}
+
+.likes-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.description-section {
+  margin-bottom: var(--section-space);
+}
+
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: var(--accent-color);
+}
+
+.movie-description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-light);
+  text-align: justify;
+}
+
+.cast-section {
+  margin-bottom: var(--section-space);
+}
+
+.cast-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.cast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+}
+
+.cast-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  object-fit: cover;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cast-name {
+  font-size: 10px;
+  text-align: center;
+  color: var(--text-light);
+  max-width: 100%;
+  white-space: wrap;
+}
+
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, auto);
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.watch-btn {
+  background-color: var(--brand-color);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(254, 65, 65, 0.25);
+}
+
+.watch-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(254, 65, 65, 0.35);
+  background-color: #ff5151;
+}
+
+.watch-btn-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  margin-left: 8px;
+}
+
+.action-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.action-icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-lighter);
+}
+
+@media (min-width: 768px) {
+  .movie-card {
+    max-width: 650px;
+    display: flex;
+  }
+
+  .movie-img-container {
+    width: 40%;
+    height: auto;
+  }
+
+  .movie-content {
+    width: 60%;
+    margin-top: 0;
+  }
+
+  .movie-overlay {
+    background: linear-gradient(
+      90deg, 
+      rgba(0,0,0,0) 0%, 
+      var(--poster-overlay) 100%
+    );
+  }
+}
+  </style>
+ <div class="container">
+<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+  <linearGradient id="halfGradient">
+    <stop offset="50%" stop-color="#FFD700" />
+    <stop offset="50%" stop-color="rgba(255, 255, 255, 0.2)" />
+  </linearGradient>
+</svg>
+
+<div class="movie-card">
+  <div class="movie-img-container">
+    <div class="movie-img" style="background-position: center;"></div>
+    <div class="movie-overlay"></div>
+  </div>
+  <div class="movie-content">
+    <div class="title-row">
+      <h1 class="movie-title">Muktadir Shabab<span class="year-badge">2006</span></h1>
+      <span class="rating-badge">B+</span>
+    </div>
+
+    <div class="metadata">
+      <div class="duration">
+        <svg class="duration-icon" viewBox="0 0 24 24">
+          <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+          <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+        </svg>
+        Active Now 🟢
+      </div>
+    </div>
+
+    <div class="genres">
+      <span class="genre-tag">Artist & Designer</span>
+      <span class="genre-tag">Actor</span>
+      <span class="genre-tag">Writer</span>
+    </div>
+
+    <div class="ratings-row">
+      <div class="star-rating">
+        <div class="stars">
+          <svg class="star star-filled" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/>
+          </svg>
+          <svg class="star star-filled" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/>
+          </svg>
+          <svg class="star star-filled" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/>
+          </svg>
+          <svg class="star star-filled" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/>
+          </svg>
+          <svg class="star star-half" viewBox="0 0 24 24">
+            <path d="M12 2l2.4 7.4h7.6l-6 4.6 2.3 7-6.3-4.6-6.3 4.6 2.3-7-6-4.6h7.6z"/>
+          </svg>
+        </div>
+        <span class="rating-text">8.9/10</span>
+      </div>
+
+      <div class="likes">
+        <svg class="heart-icon" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span class="likes-count">2.3M</span>
+      </div>
+    </div>
+
+    <div class="description-section">
+      <h5 class="section-title">About Me</h5>
+      <p class="movie-description" id="description">
+        Muktadir Shabab is a multi-talented creative professional from Bangladesh, excelling as an artist, writer, actor, director, and designer, while also working in digital marketing. Known for his passion and dedication, he combines artistic vision with strategic creativity across his projects. Muktadir is deeply inspired by his personal connections, notably his love for his girlfriend, Arifa. He continues to explore innovative ways to blend art, storytelling, and design, leaving a mark in every field he pursues.
+      </p>
+    </div>
+
+    <div class="cast-section">
+      <h5 class="section-title">My Team</h5>
+      <div class="cast-list">
+        <div class="cast-item">
+          <img src="https://res.cloudinary.com/dxiwnqpja/image/upload/v1759510240/IMG-20251003-WA0004_ee0vgn.jpg" class="cast-photo" alt="" />
+          <span class="cast-name">Al Anis</span>
+        </div>
+        <div class="cast-item">
+          <img src="https://res.cloudinary.com/dxiwnqpja/image/upload/v1759510243/IMG_20250519_211002_mk0744.jpg" class="cast-photo" alt="" />
+          <span class="cast-name">Nazmul Islam</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <div class="watch-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <span class="watch-btn-text">See Artworks</span>
+      </div>
+
+      <div class="action-btn">
+        <svg class="action-icon" viewBox="0 0 24 24">
+          <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+        </svg>
+      </div>
+
+      <div class="action-btn">
+        <svg class="action-icon" viewBox="0 0 24 24">
+          <path d="M17 3H7c-1.1 0-1.99.9-1.99 2L5 21l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+        </svg>
+      </div>
+
+      <div class="action-btn">
+        <svg class="action-icon" viewBox="0 0 24 24">
+          <path d="M15 4C12.8 4 11 5.8 11 8c0 2.2 1.8 4 4 4s4-1.8 4-4c0-2.2-1.8-4-4-4zm4.9 8.5c.6 1 .8 2.3.8 3.5 0 2.8-2.2 5-5 5h-5.4c-3.1 0-5.6-2.5-5.6-5.6V15c0-1.1.9-2 2-2h4.6c.3 0 .5.1.7.3.5.5.8 1.1.8 1.7v.3c0 .3-.3.6-.6.6h-1.5c-.5 0-.9.4-.9.9s.4.9.9.9h2.4c1.1 0 2.1-.5 2.8-1.2.4-.4 1.2-1.5 1.2-1.5M9 17c-.8 0-1.5-.7-1.5-1.5S8.2 14 9 14s1.5.7 1.5 1.5S9.8 17 9 17z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+   </div>
     <section class="section-title">
   <h2>My Strength</h2>
   <span class="subtitle">Introducing Mr. Nazmul & Mr. Anis</span>
