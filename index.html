@@ -1464,6 +1464,16 @@ function renderNewsCards(posts) {
   });
 }
 
+// Function to extract text from HTML content and limit length
+function extractText(html, maxLength = 150) {
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+  let text = tempDiv.textContent || tempDiv.innerText || "";
+  text = text.replace(/\s+/g, ' ').trim(); // remove extra spaces/newlines
+  if (text.length > maxLength) text = text.substring(0, maxLength) + "...";
+  return text;
+}
+
 // JSONP callback for label-specific feed
 function handleBloggerFeed(data) {
   if (data && data.feed && data.feed.entry && data.feed.entry.length > 0) {
@@ -1482,12 +1492,12 @@ function handleBloggerFeed(data) {
       const img = tempDiv.querySelector('img');
       const thumbnail = img ? img.src : "https://via.placeholder.com/400x200";
 
-      // Use snippet or summary as description
-      let description = entry.summary ? entry.summary.$t : "Description not available";
-      
+      // Extract description text from summary or content
+      let description = entry.summary ? extractText(entry.summary.$t) : extractText(entry.content.$t);
+
       return {
         title: entry.title.$t,
-        description: description,
+        description: description || "Description not available",
         date: date,
         thumbnail: thumbnail,
         link: link,
