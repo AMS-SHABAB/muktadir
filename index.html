@@ -1453,10 +1453,8 @@ function renderNewsCards(posts) {
   posts.forEach(post => {
     const card = document.createElement('div');
     card.className = "news-card";
-    if (post.thumbnail) {
-      card.innerHTML += `<img class="news-thumbnail" src="${post.thumbnail}" alt="Exhibition Thumbnail">`;
-    }
-    card.innerHTML += `
+    card.innerHTML = `
+      ${post.thumbnail ? `<img class="news-thumbnail" src="${post.thumbnail}" alt="Thumbnail">` : ""}
       <h2 class="news-title">${post.title}</h2>
       <p class="news-date">${post.date}</p>
       <p class="neews-description">${post.description}</p>
@@ -1466,58 +1464,46 @@ function renderNewsCards(posts) {
   });
 }
 
-// Helper to fetch meta description from a post URL
-async function fetchMetaDescription(url) {
-  try {
-    const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(url));
-    const data = await response.json();
-    const html = data.contents;
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    const meta = doc.querySelector('meta[name="description"]');
-    return meta ? meta.getAttribute('content') : "";
-  } catch (err) {
-    console.error("Failed to fetch meta description:", err);
-    return "";
-  }
-}
-
-// JSONP callback
-async function handleBloggerFeed(data) {
+// JSONP callback for label-specific feed
+function handleBloggerFeed(data) {
   if (data && data.feed && data.feed.entry && data.feed.entry.length > 0) {
-    const posts = await Promise.all(data.feed.entry.map(async entry => {
+    const posts = data.feed.entry.map(entry => {
       let link = "#";
       if (entry.link) {
         const alt = entry.link.find(l => l.rel === 'alternate');
         if (alt && alt.href) link = alt.href;
       }
+
       const date = entry.published ? new Date(entry.published.$t).toLocaleDateString() : "";
-      const thumbnailDiv = document.createElement('div');
-      thumbnailDiv.innerHTML = entry.content ? entry.content.$t : "";
-      const img = thumbnailDiv.querySelector('img');
+
+      // Use first image in content if available
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = entry.content ? entry.content.$t : "";
+      const img = tempDiv.querySelector('img');
       const thumbnail = img ? img.src : "https://via.placeholder.com/400x200";
-      
-      // Fetch meta description
-      const metaDescription = await fetchMetaDescription(link);
+
+      // Use snippet or summary as description
+      let description = entry.summary ? entry.summary.$t : "Description not available";
       
       return {
         title: entry.title.$t,
-        description: metaDescription || "Description not available",
+        description: description,
         date: date,
         thumbnail: thumbnail,
         link: link,
         readMore: "Read More"
-      }
-    }));
+      };
+    });
     renderNewsCards(posts);
   } else {
     renderNewsCards(demoPosts);
   }
 }
 
-// Add script tag dynamically for JSONP
+// Load label feed dynamically
 document.addEventListener('DOMContentLoaded', () => {
   const script = document.createElement('script');
-  script.src = 'https://blyere.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBloggerFeed&max-results=3';
+  script.src = 'https://blyere.blogspot.com/feeds/posts/default/-/Projects%20Vlog?alt=json-in-script&callback=handleBloggerFeed&max-results=10';
   document.body.appendChild(script);
 });
 </script>
