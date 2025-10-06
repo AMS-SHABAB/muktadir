@@ -1444,34 +1444,9 @@ const demoPosts = [
     thumbnail: "https://via.placeholder.com/400x200",
     link: "#",
     readMore: "Coming Soon"
-  },
-  {
-    title: "Decorating a small nursery",
-    description: "Nature-related work will be done on a small wall of Banarupa Nursery towards Chittagong DC Hill.",
-    date: "Dates are not finalized.",
-    thumbnail: "",
-    link: "#",
-    readMore: "Coming Soon"
-  },
-  {
-    title: "Kali Puja Decoration 2025",
-    description: "We are now receiving bookings for Kali Puja decorations from Chittagong, Patiya.We haven't finalized anything yet. We will update once it is finalized.",
-    date: "Dates are not finalized.",
-    thumbnail: "https://via.placeholder.com/400x200",
-    link: "#",
-    readMore: "Coming Soon"
   }
 ];
 
-// Helper to extract first image from Blogger content
-function extractFirstImage(htmlString) {
-  const div = document.createElement('div');
-  div.innerHTML = htmlString;
-  const img = div.querySelector('img');
-  return img ? img.src : "https://via.placeholder.com/400x200";
-}
-
-// Render news cards (accepts array of post objects)
 function renderNewsCards(posts) {
   const container = document.getElementById('news-container');
   container.innerHTML = "";
@@ -1491,48 +1466,42 @@ function renderNewsCards(posts) {
   });
 }
 
-// Fetch posts from Blogger feed
-function fetchBloggerPosts() {
-  // Blogger JSON Feed
-  const feedUrl = 'https://blyere.blogspot.com/feeds/posts/default?alt=json&max-results=3';
-  fetch(feedUrl)
-    .then(response => response.json())
-    .then(data => {
-      if (data && data.feed && data.feed.entry && data.feed.entry.length > 0) {
-        const posts = data.feed.entry.map(entry => {
-          // Find alternate link
-          let link = "#";
-          if (entry.link) {
-            const alt = entry.link.find(l => l.rel === 'alternate');
-            if (alt && alt.href) link = alt.href;
-          }
-          // Get date, description, thumbnail
-          const date = entry.published ? new Date(entry.published.$t).toLocaleDateString() : "";
-          const description = entry.summary ? entry.summary.$t : "";
-          const thumbnail = extractFirstImage(entry.content ? entry.content.$t : "");
-          return {
-            title: entry.title.$t,
-            description: description,
-            date: date,
-            thumbnail: thumbnail,
-            link: link,
-            readMore: "Read More"
-          }
-        });
-        renderNewsCards(posts);
-      } else {
-        // If no live posts, show demo
-        renderNewsCards(demoPosts);
+// JSONP callback
+function handleBloggerFeed(data) {
+  if (data && data.feed && data.feed.entry && data.feed.entry.length > 0) {
+    const posts = data.feed.entry.map(entry => {
+      let link = "#";
+      if (entry.link) {
+        const alt = entry.link.find(l => l.rel === 'alternate');
+        if (alt && alt.href) link = alt.href;
       }
-    })
-    .catch(error => {
-      console.error("Failed to fetch Blogger feed, showing demo posts.", error);
-      renderNewsCards(demoPosts);
+      const date = entry.published ? new Date(entry.published.$t).toLocaleDateString() : "";
+      const description = entry.summary ? entry.summary.$t : "";
+      const div = document.createElement('div');
+      div.innerHTML = entry.content ? entry.content.$t : "";
+      const img = div.querySelector('img');
+      const thumbnail = img ? img.src : "https://via.placeholder.com/400x200";
+      return {
+        title: entry.title.$t,
+        description: description,
+        date: date,
+        thumbnail: thumbnail,
+        link: link,
+        readMore: "Read More"
+      }
     });
+    renderNewsCards(posts);
+  } else {
+    renderNewsCards(demoPosts);
+  }
 }
 
-// Initialize news cards on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', fetchBloggerPosts);
+// Add script tag dynamically for JSONP
+document.addEventListener('DOMContentLoaded', () => {
+  const script = document.createElement('script');
+  script.src = 'https://blyere.blogspot.com/feeds/posts/default?alt=json-in-script&callback=handleBloggerFeed&max-results=3';
+  document.body.appendChild(script);
+});
 </script>
 </body>
 </html>
