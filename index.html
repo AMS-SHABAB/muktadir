@@ -1520,5 +1520,144 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(script);
 });
 </script>
+  
+<style>
+.footer {
+  background-color: #111;
+  color: #eee;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  box-shadow: inset 4px 4px 8px #000, inset -4px -4px 8px #222;
+}
+
+.footer-logo {
+  margin-bottom: 25px;
+}
+
+.footer-logo svg {
+  width: 100px;
+  height: 100px;
+  fill: #eee;
+}
+
+.footer-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.footer-buttons a {
+  background-color: #222;
+  color: #eee;
+  padding: 10px 18px;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  box-shadow: 4px 4px 8px #000, -4px -4px 8px #222;
+  transition: 0.3s;
+}
+
+.footer-buttons a:hover {
+  background-color: #333;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-social a {
+  color: #eee;
+  font-size: 1.4rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: #1da1f2;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+</style>
+
+<footer class="footer">
+  <div class="footer-logo">
+    <!-- Example SVG logo -->
+    <svg xmlns="http://www.w3.org/2000/svg" 
+     width="150" height="150" 
+     viewBox="0 0 1024 1024">
+<g transform="translate(0,1024) scale(0.1,-0.1)"
+fill="#fff" stroke="none">
+<path d="M2170 7901 c0 -15 11 -105 25 -201 13 -96 36 -258 49 -360 14 -102
+46 -331 70 -510 25 -179 81 -588 125 -910 44 -322 87 -630 95 -685 8 -55 29
+-212 46 -350 35 -285 38 -305 51 -305 15 0 -2 -111 159 1005 78 544 112 779
+216 1505 53 371 101 708 106 748 6 40 9 74 7 76 -2 2 -217 6 -476 8 l-473 4 0
+-25z"/>
+<path d="M4519 7910 c-5 -3 -11 -299 -14 -656 -5 -533 -4 -652 7 -660 12 -10
+213 -41 798 -124 919 -130 1557 -222 1570 -227 8 -4 -91 -21 -220 -39 -509
+-72 -1336 -188 -1733 -243 -229 -32 -419 -60 -421 -62 -2 -2 -6 -781 -9 -1731
+l-7 -1727 313 -3 c171 -2 1127 -5 2123 -6 l1812 -4 6 884 c4 485 6 1146 4
+1468 l-3 585 -1420 5 c-781 3 -1406 8 -1390 12 17 5 179 32 360 62 182 30 614
+102 960 160 347 57 810 134 1031 171 221 36 417 70 438 76 l36 10 0 384 c0
+211 -4 386 -8 389 -8 5 -1861 314 -2462 411 -157 25 -298 50 -315 55 -17 4
+585 7 1375 7 l1405 -2 6 370 c3 204 4 382 1 396 l-4 27 -1332 6 c-1918 10
+-2897 12 -2907 6z m4186 -35 l30 -5 -1 -167 c0 -93 -1 -260 -2 -371 l-2 -204
+-1495 3 c-822 2 -1498 0 -1501 -4 -16 -15 14 -25 115 -36 58 -7 177 -25 265
+-41 89 -16 713 -120 1389 -232 l1227 -203 -2 -370 -3 -370 -285 -47 c-279 -47
+-474 -79 -835 -137 -99 -16 -355 -59 -570 -96 -214 -36 -524 -88 -688 -116
+-164 -27 -371 -64 -460 -81 l-162 -33 -597 -2 -598 -3 0 260 c0 143 3 260 6
+260 3 0 101 13 217 30 117 16 298 41 402 55 105 14 267 37 360 50 536 77 1540
+215 1562 215 1 0 3 4 3 9 0 5 -28 12 -62 16 -68 7 -1018 142 -1413 201 -132
+19 -289 42 -350 50 -60 8 -209 30 -330 48 -121 19 -242 37 -270 40 -27 4 -67
+9 -87 12 l-38 6 0 632 c0 348 2 635 5 638 6 6 4128 -1 4170 -7z"/>
+<path d="M4370 5090 c0 -1760 3 -2650 10 -2650 7 0 10 890 10 2650 0 1760 -3
+2650 -10 2650 -7 0 -10 -890 -10 -2650z"/>
+<path d="M1280 5080 c0 -1733 3 -2610 10 -2610 7 0 10 877 10 2610 0 1733 -3
+2610 -10 2610 -7 0 -10 -877 -10 -2610z"/>
+<path d="M1479 6138 c0 -134 -2 -423 -5 -643 -6 -592 -5 -3025 1 -3036 4 -5
+143 -9 341 -9 281 0 336 2 340 14 5 13 -165 1043 -385 2336 -38 223 -101 593
+-140 823 -132 779 -128 757 -141 757 -6 0 -10 -91 -11 -242z"/>
+<path d="M3742 6163 c-62 -353 -92 -529 -236 -1403 -139 -842 -247 -1502 -302
+-1850 -14 -91 -36 -228 -49 -305 -12 -77 -20 -143 -18 -147 2 -5 150 -8 327
+-8 l323 0 6 98 c4 53 7 840 7 1747 1 2222 2 2055 -13 2055 -9 0 -23 -59 -45
+-187z"/>
+</g>
+</svg>
+  </div>
+
+  <div class="footer-buttons">
+    <a href="tel:+8801619054973">Hire Me (WhatsApp)</a>
+    <a href="mailto:example@email.com">Email Me</a>
+    <a href="https://example.com/booking" target="_blank">Booking for a Project</a>
+  </div>
+
+  <div class="footer-social">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+    <a href="https://medium.com" target="_blank"><i class="fab fa-medium"></i></a>
+    <a href="https://blogger.com" target="_blank"><i class="fab fa-blogger"></i></a>
+    <a href="https://www.threads.net/" target="_blank"><i class="fab fa-thread"></i></a>
+    <a href="https://tumblr.com" target="_blank"><i class="fab fa-tumblr"></i></a>
+  </div>
+
+  <div class="footer-copy">
+    &copy; 2025 Your Brand. All Rights Reserved.
+  </div>
+</footer>
+
+<!-- Add Font Awesome CDN for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
